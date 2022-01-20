@@ -6,15 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# puts 'cleaning up database'
-# Restaurant.destroy_all
-# puts 'database is clean'
-# puts 'creating restaurants'
+puts 'cleaning up database'
+Restaurant.destroy_all
+puts 'database is clean'
+puts 'creating restaurants'
+5.times do
+  restaurant = Restaurant.create(
+    name: Faker::Name.name,
+    address: Faker::Address.street_address,
+    category: %w[chinese italian japanese french belgian].sample,
+    phone_number: Faker::PhoneNumber.phone_number
+  )
+  puts "restaurants #{restaurant.id} is created"
+end
+puts 'done'
+
+# puts 'Creating a review...'
 # 5.times do
-#   restaurant= Restaurant.create(
-#     name:Faker::Restaurant.name
-#     address :Faker::Address.street_address,
-#     rating:rand(1..5)
+#   review = Review.create(
+#     rating:
+
 #   )
-#   puts 'restaurants' {restaurant.id} is created
+
 # end
+
+# Review.create!(review_attributes)
+# puts 'Finished!'
