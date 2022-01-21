@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   # get 'restaurants/:id/edit', to: 'restaurants#edit'
   # patch 'restaurants/:id', to: 'restaurants#update'
   # delete 'restaurants/:id', to: 'restaurants#destroy'
-
-  resources :restaurants do
-    resources :reviews, only: [ :new, :create ]
+  root to: 'restaurants#index'
+  resources :restaurants, only: [:index, :show, :new, :create] do
+    resources :reviews, only: [:create]
   end
-  # resources :reviews, only: '%w[ :destroy ]'
 end
